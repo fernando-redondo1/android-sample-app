@@ -14,18 +14,10 @@ android {
         versionName "1.0"
     }
 
-    // EL BLOQUE DEBE ESTAR AQUÍ (FUERA DE DEFAULTCONFIG)
+    // Usamos la sintaxis de bloque externa que es la más estable
     externalNativeBuild {
         ndkBuild {
-            // Esta sintaxis con '=' es la única que acepta Gradle 8.0
-            path = file("src/main/jni/Android.mk")
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            path file("src/main/jni/Android.mk")
         }
     }
 }
