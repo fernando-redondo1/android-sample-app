@@ -6,8 +6,6 @@ android {
     namespace "io.bitrise.ndk_sample"
     compileSdkVersion 34
 
-    ndkVersion "26.1.10909125"
-
     defaultConfig {
         applicationId "io.bitrise.ndk-sample"
         minSdkVersion 21
@@ -16,10 +14,10 @@ android {
         versionName "1.0"
     }
 
-    // EL BLOQUE DEBE IR AQUÍ, FUERA DE DEFAULTCONFIG
+    // ESTA ES LA ESTRUCTURA EXACTA PARA EL PLUGIN 8.0+
     externalNativeBuild {
         ndkBuild {
-            path = file("src/main/jni/Android.mk")
+            path "src/main/jni/Android.mk"
         }
     }
 
