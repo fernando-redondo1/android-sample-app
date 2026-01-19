@@ -3,25 +3,20 @@ plugins {
 }
 
 android {
-    // Namespace corregido para evitar errores de vinculación
     namespace "io.bitrise.ndk_sample"
     compileSdkVersion 34
 
     defaultConfig {
-        // CORRECCIÓN CLAVE: Se cambió "ndk-sample" por "ndk_sample" 
-        // porque Android no permite guiones en el ID
-        applicationId "io.bitrise.ndk_sample"
+        // CAMBIO AQUÍ: ndk_sample (con guion bajo)
+        applicationId "io.bitrise.ndk_sample" 
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
 
-    // Configuración para el código C/C++ (NDK)
-    // Se coloca aquí para que Gradle lo reconozca correctamente
     externalNativeBuild {
         ndkBuild {
-            // Se usa el signo '=' para asignar la ruta del archivo
             path = file("src/main/jni/Android.mk")
         }
     }
