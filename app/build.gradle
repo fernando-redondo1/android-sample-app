@@ -6,7 +6,6 @@ android {
     namespace "io.bitrise.ndk_sample"
     compileSdkVersion 34
 
-    // Esta línea permite que Bitrise use el compilador adecuado
     ndkVersion "26.1.10909125"
 
     defaultConfig {
@@ -16,10 +15,10 @@ android {
         versionCode 1
         versionName "1.0"
 
-        // Bloque del NDK con la sintaxis correcta (= y file)
+        // Esta es la forma correcta para la configuración interna
         externalNativeBuild {
             ndkBuild {
-                path = file("src/main/jni/Android.mk")
+                arguments "NDK_APPLICATION_MK:=src/main/jni/Application.mk"
             }
         }
     }
@@ -31,7 +30,7 @@ android {
         }
     }
 
-    // Vinculación final del código C
+    // Esta es la forma correcta para conectar el archivo Android.mk
     externalNativeBuild {
         ndkBuild {
             path = file("src/main/jni/Android.mk")
