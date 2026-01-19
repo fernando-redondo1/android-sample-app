@@ -15,9 +15,10 @@ android {
         versionName "1.0"
     }
 
-    externalNativeBuild {
+  externalNativeBuild {
         ndkBuild {
-            path = file("src/main/jni/Android.mk")
+            // El nombre debe ser EXACTAMENTE el que pusiste en la Imagen #15
+            path = file("src/main/jni/android_config.mk")
         }
     }
 
