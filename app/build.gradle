@@ -14,10 +14,9 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
-  externalNativeBuild {
+externalNativeBuild {
         ndkBuild {
-            // El nombre debe ser EXACTAMENTE el que pusiste en la Imagen #15
+            // CAMBIO: Debe decir android_config.mk para que coincida con tu archivo real
             path = file("src/main/jni/android_config.mk")
         }
     }
