@@ -16,11 +16,10 @@ android {
     }
 externalNativeBuild {
         ndkBuild {
-            // CAMBIO: Debe decir android_config.mk para que coincida con tu archivo real
-            path = file("src/main/jni/android_config.mk")
+            // Usamos projectDir para que la ruta sea absoluta y exacta
+            path = file("${project.projectDir}/src/main/jni/android_config.mk")
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
