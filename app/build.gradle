@@ -1,16 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
 android {
-    // ... resto de tu config
+    namespace "io.bitrise.ndk_sample"
+    compileSdkVersion 34
+
+    // Esta línea permite que Bitrise use el compilador adecuado
+    ndkVersion "26.1.10909125"
 
     defaultConfig {
-        // ... otras opciones
-        
+        applicationId "io.bitrise.ndk-sample"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        // Bloque del NDK con la sintaxis correcta (= y file)
         externalNativeBuild {
             ndkBuild {
-                // Asegúrate de que no haya espacios extra antes del '='
-                path = file("src/main/jni/Android.mk") 
+                path = file("src/main/jni/Android.mk")
             }
         }
     }
-    
-    // IMPORTANTE: Borra cualquier otro bloque externalNativeBuild que esté fuera de defaultConfig
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Vinculación final del código C
+    externalNativeBuild {
+        ndkBuild {
+            path = file("src/main/jni/Android.mk")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
