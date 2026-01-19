@@ -16,9 +16,9 @@ android {
         versionName "1.0"
     }
 
+    // EL BLOQUE DEBE IR AQUÍ, FUERA DE DEFAULTCONFIG
     externalNativeBuild {
         ndkBuild {
-            // El signo '=' es obligatorio aquí
             path = file("src/main/jni/Android.mk")
         }
     }
