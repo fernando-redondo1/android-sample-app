@@ -1,15 +1,16 @@
-// ... dentro de defaultConfig
-externalNativeBuild {
-    ndkBuild {
-        // CAMBIO: Añadir el signo '='
-        path = "src/main/jni/Android.mk" 
-    }
-}
+android {
+    // ... resto de tu config
 
-// ... y al final del bloque android
-externalNativeBuild {
-    ndkBuild {
-        // CAMBIO: Añadir el signo '='
-        path = "src/main/jni/Android.mk"
+    defaultConfig {
+        // ... otras opciones
+        
+        externalNativeBuild {
+            ndkBuild {
+                // Asegúrate de que no haya espacios extra antes del '='
+                path = file("src/main/jni/Android.mk") 
+            }
+        }
     }
+    
+    // IMPORTANTE: Borra cualquier otro bloque externalNativeBuild que esté fuera de defaultConfig
 }
